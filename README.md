@@ -1,95 +1,114 @@
-#📧 Spam Mail Detection Using Logistic Regression
+# 📧 Spam Mail Detection Using Logistic Regression
 
-This project implements a machine learning model to classify SMS messages as either spam or ham (non-spam) using logistic regression and TF-IDF vectorization.
+A machine learning project that classifies SMS messages as **spam** or **ham (non-spam)** using **Logistic Regression** and **TF-IDF vectorization**.
 
-📂 Dataset
+---
 
-The dataset used is spam.csv, which contains labeled SMS messages:
+## 📂 Dataset
 
-v1: Label (spam or ham)
+The dataset used is **spam.csv**, which contains labeled SMS messages:
 
-v2: Message content
+* **v1**: Label (`spam` or `ham`)
+* **v2**: Message content
 
-Additional unnamed columns are dropped during preprocessing.
+👉 Additional unnamed columns are dropped during preprocessing.
 
-🧪 Libraries Used
+---
 
-pandas for data manipulation
+## 🧪 Libraries Used
 
-matplotlib and seaborn for visualization
+* **pandas** → data manipulation
+* **matplotlib**, **seaborn** → data visualization
+* **scikit-learn (sklearn)** → model building and evaluation
+* **TfidfVectorizer** → text feature extraction
 
-sklearn for model building and evaluation
+---
 
-TfidfVectorizer for text feature extraction
+## 🔍 Workflow
 
-🔍 Workflow
+1. **Load and Inspect Data**
 
-Load and Inspect Data
+   * Read CSV with proper encoding (`ISO-8859-1`)
+   * Display dataset info and first few rows
 
-Read CSV with proper encoding
+2. **Data Cleaning**
 
-Display basic info and head of the dataset
+   * Handle null values
+   * Drop unnecessary columns (`Unnamed: 3`, `Unnamed: 4`)
+   * Encode labels: `spam → 0`, `ham → 1`
 
-Data Cleaning
+3. **Visualization**
 
-Replace nulls with empty strings
+   * Count plot of spam vs ham messages
 
-Drop unnecessary columns (Unnamed: 3, Unnamed: 4)
+4. **Feature Extraction**
 
-Encode labels: spam → 0, ham → 1
+   * Use **TF-IDF Vectorizer** to convert text into numerical features
 
-Visualization
+5. **Model Training**
 
-Count plot of spam vs ham messages
+   * Split data into **80% training / 20% testing**
+   * Train a **Logistic Regression** model
 
-Feature Extraction
+6. **Evaluation**
 
-Use TfidfVectorizer to convert text into numerical features
+   * Measure accuracy on both **training** and **test sets**
 
-Model Training
+7. **Prediction**
 
-Split data into training and test sets (80/20)
+   * Input a new message and predict whether it’s spam or ham
 
-Train a LogisticRegression model
+---
 
-Evaluation
+## 📈 Accuracy
 
-Measure accuracy on both training and test sets
+* **Training Accuracy**: ~ *depends on run*
+* **Test Accuracy**: ~ *depends on run*
 
-Prediction
+---
 
-Input a new message and predict whether it's spam or ham
+## 🧪 Example Prediction
 
-📈 Accuracy
-
-Training Accuracy: ~ (depends on run)
-
-Test Accuracy: ~ (depends on run)
-
-🧪 Example Prediction
-
+```python
 input_mail = ['WINNER!! As a valued network customer you have been selected to receive a £900 prize reward!']
+prediction = model.predict(vectorizer.transform(input_mail))
 
-Output:
+if prediction[0] == 0:
+    print("Spam Mail")
+else:
+    print("Ham Mail")
+```
 
-spam mail
+✅ **Output:**
 
-🚀 How to Run
+```
+Spam Mail
+```
 
-Clone the repository or copy the script.
+---
 
-Ensure spam.csv is placed in the correct path.
+## 🚀 How to Run
 
-Install required libraries:
+1. Clone the repository or copy the script.
 
-pip install pandas scikit-learn matplotlib seaborn
+2. Ensure **spam.csv** is placed in the correct path.
 
-Run the script in a Python environment.
+3. Install required libraries:
 
-📌 Notes
+   ```bash
+   pip install pandas scikit-learn matplotlib seaborn
+   ```
 
-Encoding is set to ISO-8859-1 to handle special characters.
+4. Run the script in a Python environment (Jupyter Notebook, VS Code, PyCharm, etc.).
 
-TF-IDF helps reduce the impact of common stop words.
+---
 
-Logistic Regression is chosen for its simplicity and interpretability.
+## 📌 Notes
+
+* Encoding is set to **ISO-8859-1** to handle special characters.
+* **TF-IDF** reduces the influence of common stopwords.
+* **Logistic Regression** is chosen for its **simplicity** and **interpretability**.
+
+---
+
+
